@@ -1,0 +1,8 @@
+POST http://localhost:3000/newTask HTTP/1.1
+Content-Type: application/json
+
+{
+  "body": "Burer erwfwvr rewef",
+  "isDone": false,
+  "userId": "i32b@biu8uewb343f"
+}
