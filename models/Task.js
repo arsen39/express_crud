@@ -14,16 +14,6 @@ class Task {
   async deleteTask () {
     return db.delete(this.taskId)
   }
-
-  async makeDoneUndone () {
-    const oldTask = db.get(this.taskId);
-    oldTask.isDone = !oldTask.isDone;
-    const newTask = await new Task ({
-      ...oldTask
-    });
-    db.set(this.taskId, newTask);
-    return newTask;
-  };
 }
 
 Task.findAllTasksOfUser = async id => {
@@ -33,6 +23,22 @@ Task.findAllTasksOfUser = async id => {
       return task;
     }
   })
+}
+
+Task.deleteTaskbyId = async id => {
+  return db.delete(id);
+}
+
+Task.updateTask = async (id, body) => {
+  const oldTask = db.get(id);
+  oldTask.body = body;
+  return db.set(id, oldTask);
+}
+
+Task.makeDoneUndone = async id => {
+  const oldTask = db.get(id);
+  oldTask.isDone = !oldTask.isDone;
+  return db.set(id, oldTask);
 }
 
 module.exports = Task;
