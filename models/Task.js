@@ -34,3 +34,5 @@ Task.findAllTasksOfUser = async id => {
     }
   })
 }
+
+module.exports = Task;
